@@ -1,0 +1,32 @@
+#body-grid {
+    font-family:'Nunito Semibold';
+    text-align: center;
+}
+
+#wrapper-header{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+}
+
+#content-days{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(5,minmax(100px,auto));
+    grid-gap: 5px;
+    margin: 0 0;
+}
+
+.day-number{
+    text-align: left;
+    padding-left: 3%;
+}
+
+#one{
+    grid-column: 1 / 2;
+    margin: auto;
+    padding: 10px;
+}
+#two{
+    grid-column: 2 / 8;
+    margin: auto;
+}

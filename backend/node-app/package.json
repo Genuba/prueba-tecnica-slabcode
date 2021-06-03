@@ -1,0 +1,20 @@
+{
+  "name": "node_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "set NODE_ENV=development & nodemon src/app.js",
+    "build": "NODE_ENV=production node src/app.js",
+    "test": "npm run test"
+  },
+  "author": "genuba",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7"
+  }
+}

@@ -1,12 +1,11 @@
 import React from 'react';
 import CalendarHeader from './CalendarHeader';
 import CalendarGrid from './CalendarGrid';
-
-const Calendar = ({ dates }) => {
+const Calendar = () => {
   return (
     <div className="w-full flex-grow overflow-hidden flex flex-col">
       <CalendarHeader />
-      <CalendarGrid />
+      <CalendarGrid/>
     </div>
   );
 }
