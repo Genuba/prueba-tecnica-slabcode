@@ -3,11 +3,11 @@ const con = require('./../conexion');
 const router = Router();
 
 
-validarHorarioFechaEventoDisponible = (fecha, horaInicio, horaFin) => {
+validarHorarioFechaEventoDisponible = (fecha, horaInicio, horaFin,idEvento = 0) => {
     return new Promise((resolve, reject) => {
         try {
             let sql = `select fecha,hora_inicio,hora_fin from eventos 
-                    where fecha = '${fecha}' 
+                    where fecha = '${fecha}' and  id_eventos <> ${idEvento}
                     and ((hora_inicio < '${horaInicio}' and hora_fin > '${horaInicio}')
                     or (hora_inicio < '${horaFin}' and hora_fin > '${horaFin}')
                     or (hora_inicio >= '${horaInicio}' and hora_fin <= '${horaFin}'))`
@@ -42,7 +42,8 @@ router.post('/', async (req, res) => {
                     }
                     objRes = {
                         exitoso: true,
-                        message: "Evento guardado " + results.insertId
+                        message: "Evento guardado " + results.insertId,
+                        id: results.insertId
                     }
                     res.json(objRes)
                 })
@@ -92,7 +93,7 @@ router.put('/:id', async (req, res) => {
         let idEvento = req.params.id;
         let evento = await req.body;
 
-        validarHorarioFechaEventoDisponible(evento.fecha, evento.horaInicio, evento.horaFin).then(fechaHorarioOcupado => {
+        validarHorarioFechaEventoDisponible(evento.fecha, evento.horaInicio, evento.horaFin,idEvento).then(fechaHorarioOcupado => {
             var objRes = {}
             if (fechaHorarioOcupado) {
                 objRes = {
