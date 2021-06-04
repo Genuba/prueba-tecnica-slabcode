@@ -105,17 +105,17 @@ const CrudEvento = ({ evento, modal, toggle }) => {
                     <ModalBody>
                         <FormGroup>
                             <Label>Nombre</Label>
-                            <Input name="nombre" type="text" defaultValue={evento.nombre || ''} />
+                            <Input name="nombre" type="text" defaultValue={evento.nombre || ''} required/>
                         </FormGroup>
                         <FormGroup>
                             <Label>Descripción</Label>
-                            <Input name="descripcion" type="textarea" defaultValue={evento.descripcion || ''} />
+                            <Input name="descripcion" type="textarea" defaultValue={evento.descripcion || ''} required/>
                         </FormGroup>
                         <Row>
                             <Col>
                                 <FormGroup>
                                     <Label>Lugar</Label>
-                                    <Input name="lugar" type="select" value={idLugar.value || evento.idLugar || ''} onChange={e => setIdLugar({ value: (e.target.value) })}>
+                                    <Input name="lugar" type="select" value={idLugar.value || evento.idLugar || ''} onChange={e => setIdLugar({ value: (e.target.value) })} required>
                                         <option value="" disabled>-- Select --</option>
                                         {lugares.map(x => <option key={x.id_lugares} value={x.id_lugares}>{x.lugar}</option>)}
                                     </Input>
@@ -139,13 +139,13 @@ const CrudEvento = ({ evento, modal, toggle }) => {
                             <Col>
                                 <FormGroup>
                                     <Label>Hora Inicio</Label>
-                                    <Input name="horaInicio" type="time" step="3600" onChange={e => setMinTime(e.target.value)} defaultValue={evento.horaInicio + ":00"  || ''} />
+                                    <Input name="horaInicio" type="time" step="3600" onChange={e => setMinTime(e.target.value)} defaultValue={evento.horaInicio + ":00"  || ''} required/>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup>
                                     <Label>Hora Fin</Label>
-                                    <Input name="horaFin" type="time" step="3600" min={(parseInt(minTime.split(':')[0]) + 1) + ":00"} defaultValue={evento.horaFin + ":00" || ''} />
+                                    <Input name="horaFin" type="time" step="3600" min={(parseInt(minTime.split(':')[0]) + 1) + ":00"} defaultValue={evento.horaFin + ":00" || ''} required/>
                                 </FormGroup>
                             </Col>
                         </Row>
