@@ -8,5 +8,5 @@ Pasos para la instalacion
 3) instalar las librerias de la api en backend/node-app/ usar npm install y desplegar npm start
 4) instalar las librerias de la web app en frontend/calendar-app/ usar npm install y desplegar npm start
 
-# web-app
+# calendar-app
 ![Screenshot](screenshot.png)
