@@ -15,6 +15,8 @@ import {
     ModalFooter
 } from 'reactstrap';
 
+const API_URL = 'http://localhost:3111/api' // cambiar dependiendo direccion de la api
+
 const CrudEvento = ({ evento, modal, toggle }) => {
     const [minTime, setMinTime] = useState('00:00')
     const [actionPage, setActionPage] = useState('Crear')
@@ -29,11 +31,11 @@ const CrudEvento = ({ evento, modal, toggle }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const urlLugares = 'http://localhost:3111/api/lugares'
+        const urlLugares = `${API_URL}/lugares`
         axios({ url: urlLugares, method: "GET" }).then(res => {
             setLugares(res.data)
         })
-        const urlColores = 'http://localhost:3111/api/colores'
+        const urlColores = `${API_URL}/colores`
         axios({ url: urlColores, method: "GET" }).then(res => {
             setColores(res.data)
         })
@@ -58,7 +60,7 @@ const CrudEvento = ({ evento, modal, toggle }) => {
 
         if (evento.id) {
             // if is update
-            const url = `http://localhost:3111/api/eventos/${evento.id}`
+            const url = `${API_URL}/eventos/${evento.id}`
             axios({ url, method: "PUT", data }).then(res => {
                 if (res.data.exitoso) {
                     data.id = evento.id
@@ -71,7 +73,7 @@ const CrudEvento = ({ evento, modal, toggle }) => {
             })
         } else {
             // if is add
-            const url = `http://localhost:3111/api/eventos`
+            const url = `${API_URL}/eventos`
             axios({ url, method: "POST", data }).then(res => {
                 if (res.data.exitoso) {
                     data.id = res.data.id
@@ -86,7 +88,7 @@ const CrudEvento = ({ evento, modal, toggle }) => {
     }
 
     const deleteEvent = () => {
-        const url = `http://localhost:3111/api/eventos/${evento.id}`
+        const url = `${API_URL}/eventos/${evento.id}`
         axios({ url, method: "DELETE" }).then(res => {
             var data = { id: evento.id,fecha:fecha }
             dispatch({ type: 'DELETE_EVENT', payload: data })
