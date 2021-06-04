@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../assets/index.css';
 import { useSelector } from 'react-redux'
+import CalendarGridGap from './CalendarGridGap'
 
 function MonthlyCalendarGrid() {
   const items = []
@@ -18,7 +18,7 @@ function MonthlyCalendarGrid() {
   days.forEach((element, index) => items.push(
     <div key={index} style={element.active ? styleDayAvailable : styleDayUnavailable}>
       <div className="day-number">{element.day}</div>
-      {[...element.childItemsEvents]}
+      {element.childItemsEvents.map((data,index) => <CalendarGridGap key={index} {...data} /> )}
     </div>
   ))
   

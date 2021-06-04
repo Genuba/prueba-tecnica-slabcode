@@ -67,5 +67,8 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+INSERT INTO `colores` VALUES (1,'Azul','blue'),(2,'Amarillo','#FFD700'),(3,'Negro','#000000'),(4,'Magenta','#8B008B'),(5,'Lima','#00FF00');
+INSERT INTO `lugares` VALUES (1,'Medellin'),(2,'Bogota'),(3,'Cali'),(4,'Barranquilla'),(5,'Tunja'),(6,'Bucaramanga');
+
 -- si se ejecuta en localhost
 -- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678';
